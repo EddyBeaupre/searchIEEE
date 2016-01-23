@@ -7,11 +7,12 @@ using System.Text.RegularExpressions;
 using System.Threading;
 namespace searchIEEE
 {
-    public class ieeeDB
+    public class ieeeDB : IDisposable
     {
         public DataTable dataTable;
         public delegate void CallbackEventHandler(Boolean? Status);
         private CallbackEventHandler callbackEventHandler;
+        private bool disposed = false;
 
         public void downloadDBCallback(Boolean? Status)
         {
@@ -53,6 +54,33 @@ namespace searchIEEE
                 if (callbackEventHandler != null)
                     callbackEventHandler(null);
             }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+
+            if (!disposed)
+            {
+                disposed = true;
+                if (disposing)
+                {
+                    this.dataTable.Dispose();
+                    GC.SuppressFinalize(this);
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            if (!disposed)
+            {
+                Dispose(true);
+            }
+        }
+
+        ~ieeeDB()
+        {
+            Dispose(false);
         }
 
         public DataRow[] searchByID(UInt64 needle)

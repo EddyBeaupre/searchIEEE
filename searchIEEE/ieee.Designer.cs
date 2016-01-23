@@ -16,6 +16,8 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
+                if(ieeeDB != null)
+                    ieeeDB.Dispose();
             }
             base.Dispose(disposing);
         }
