@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="searchIEEE.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="IEEE_MAL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://standards.ieee.org/develop/regauth/oui/oui.csv</Value>
+    </Setting>
+    <Setting Name="IEEE_MAM" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://standards.ieee.org/develop/regauth/oui28/mam.csv</Value>
+    </Setting>
+    <Setting Name="IEEE_MAS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://standards.ieee.org/develop/regauth/oui36/oui36.csv</Value>
+    </Setting>
+    <Setting Name="IEEE_IAB" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://standards.ieee.org/develop/regauth/iab/iab.csv</Value>
+    </Setting>
+    <Setting Name="IEEE_CID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://standards.ieee.org/develop/regauth/cid/cid.csv</Value>
+    </Setting>
+    <Setting Name="IEEE_Ethertype" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://standards.ieee.org/develop/regauth/ethertype/eth.csv</Value>
+    </Setting>
+    <Setting Name="IEEE_Manufacturer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://standards.ieee.org/develop/regauth/manid/manid.csv</Value>
+    </Setting>
+    <Setting Name="IEEE_Operator" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://standards.ieee.org/develop/regauth/bopid/opid.csv</Value>
+    </Setting>
+    <Setting Name="IEEE_LocalDB" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

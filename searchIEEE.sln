@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchIEEE", "searchIEEE\searchIEEE.csproj", "{4C85B4BB-0263-4091-B8E9-59DE0D83F5B5}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "searchIEEE-Setup", "searchIEEE-Setup\searchIEEE-Setup.vdproj", "{5E1FCFA9-AB58-447C-9204-8948C42FACC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C85B4BB-0263-4091-B8E9-59DE0D83F5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C85B4BB-0263-4091-B8E9-59DE0D83F5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C85B4BB-0263-4091-B8E9-59DE0D83F5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C85B4BB-0263-4091-B8E9-59DE0D83F5B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E1FCFA9-AB58-447C-9204-8948C42FACC1}.Debug|Any CPU.ActiveCfg = Debug
+		{5E1FCFA9-AB58-447C-9204-8948C42FACC1}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
