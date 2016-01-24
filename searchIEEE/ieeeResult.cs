@@ -1,83 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace searchIEEE
 {
     public partial class ieeeResult : Form
     {
-        private DataTable dataTable;
-        private DataRow[] dataRows;
+        private List<IeeeRecord> dataResults = null;
 
-        public delegate void CallbackEventHandler(Boolean? Status);
-        CallbackEventHandler callbackEventHandler = null;
-
-        public ieeeResult(DataTable dataTable)
+        public ieeeResult(List<IeeeRecord> dataResults)
         {
             try
             {
                 InitializeComponent();
-                this.dataTable = dataTable;
-                this.dataRows = null;
+                this.dataResults = dataResults;
             }
             catch
             {
-                if (callbackEventHandler != null)
-                    callbackEventHandler(null);
-            }
-        }
-
-        public ieeeResult(DataTable dataTable, CallbackEventHandler callbackEventHandler)
-        {
-            try
-            {
-                InitializeComponent();
-                this.dataTable = dataTable;
-                this.dataRows = null;
-                this.callbackEventHandler = callbackEventHandler;
-            }
-            catch
-            {
-                if (callbackEventHandler != null)
-                    callbackEventHandler(null);
-            }
-        }
-
-        public ieeeResult(DataRow[] dataRows)
-        {
-            try
-            {
-                InitializeComponent();
-                this.dataRows = dataRows;
-                this.dataTable = null;
-            }
-            catch
-            {
-                if (callbackEventHandler != null)
-                    callbackEventHandler(null);
-            }
-
-        }
-
-        public ieeeResult(DataRow[] dataRows, CallbackEventHandler callbackEventHandler)
-        {
-            try
-            {
-                InitializeComponent();
-                this.dataRows = dataRows;
-                this.dataTable = null;
-                this.callbackEventHandler = callbackEventHandler;
-            }
-            catch
-            {
-                if (callbackEventHandler != null)
-                    callbackEventHandler(null);
+                this.Close();
             }
         }
 
@@ -104,8 +46,6 @@ namespace searchIEEE
             }
             catch
             {
-                if (callbackEventHandler != null)
-                    callbackEventHandler(null);
                 this.Close();
             }
         }
@@ -131,39 +71,109 @@ namespace searchIEEE
             try
             {
                 ouiDatabaseView.Visible = false;
-                if (this.dataTable != null)
+                ouiDatabaseView.ColumnCount = 5;
+                setupDatabaseView();
+
+                if (this.dataResults != null)
                 {
-                    ouiDatabaseView.DataSource = dataTable;
-                    setupDatabaseView();
-                }
+                    Int64 Count = 0;
 
-                else if (this.dataRows != null)
+                    
 
-                {
-                    ouiDatabaseView.ColumnCount = 5;
-                    setupDatabaseView();
-
-                    foreach (DataRow dataRow in dataRows)
+                    foreach (IeeeRecord dataRow in this.dataResults)
                     {
-                        ouiDatabaseView.Rows.Add(dataRow[0], dataRow[1], dataRow[2], dataRow[3], dataRow[4]);
+                        ouiDatabaseView.Rows.Add(Count++, dataRow.Oid64, dataRow.Registry, dataRow.OrganizationName, dataRow.OrganizationAddress);
                     }
                 }
-                else
-                {
-                    if (callbackEventHandler != null)
-                        callbackEventHandler(false);
-                }
-
-                ouiDatabaseView.Sort(ouiDatabaseView.Columns[1], ListSortDirection.Ascending);
                 ouiDatabaseView.Visible = true;
-
-                if (callbackEventHandler != null)
-                    callbackEventHandler(true);
             }
             catch
             {
-                if (callbackEventHandler != null)
-                    callbackEventHandler(null);
+                this.Close();
+            }
+        }
+
+        private void ieeeResult_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.dataResults != null)
+            {
+                ouiDatabaseView.DataSource = null;
+                ouiDatabaseView.Dispose();
+                
+                this.dataResults.Clear();
+                this.dataResults = null;
+            }
+        }
+    }
+
+    public class formatOID : IFormatProvider, ICustomFormatter
+    {
+        public object GetFormat(Type formatType)
+        {
+            try
+            {
+                if (formatType == typeof(ICustomFormatter))
+                    return (this);
+                else
+                    return (null);
+            }
+            catch
+            {
+                return (null);
+            }
+        }
+
+        public static string toString(UInt64 OID)
+        {
+            try
+            {
+                int Count = 0;
+                string output = string.Empty;
+
+                foreach (Char c in OID.ToString("X12").PadRight(12, '0'))
+                {
+                    if (((Count % 2) == 0) && (Count > 0))
+                    {
+                        output += ":";
+                    }
+                    output += c;
+                    Count++;
+                }
+                return (output);
+            }
+            catch
+            {
+                return (null);
+            }
+        }
+
+        public static String cleanOID(String OID)
+        {
+            return (new Regex("[^a-fA-F0-9]").Replace(OID, "").ToUpper().PadRight(12, '0'));
+        }
+
+        public string Format(string format, object arg, IFormatProvider formatProvider)
+        {
+            try
+            {
+                if (!formatProvider.Equals(this)) return (null);
+
+                if (!format.StartsWith("MAC")) return (null);
+
+                if (arg is UInt64)
+                {
+                    return (toString((UInt64)arg));
+                }
+
+                else
+                {
+                    return (null);
+                }
+
+            }
+            catch
+            {
+                return (null);
             }
         }
     }

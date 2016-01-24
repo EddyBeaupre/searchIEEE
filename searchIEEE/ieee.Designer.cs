@@ -16,8 +16,7 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
-                if(ieeeDB != null)
-                    ieeeDB.Dispose();
+                ieeeCSV.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -128,6 +127,7 @@
             this.Name = "ieee";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "searchIEEE";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ieee_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);

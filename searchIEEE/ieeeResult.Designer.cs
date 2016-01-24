@@ -49,13 +49,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 361);
             this.Controls.Add(this.ouiDatabaseView);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "ieeeResult";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "ieeeResult";
+            this.Text = "Search Result";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ieeeResult_FormClosed);
             this.Shown += new System.EventHandler(this.ieeeResult_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ouiDatabaseView)).EndInit();
             this.ResumeLayout(false);
