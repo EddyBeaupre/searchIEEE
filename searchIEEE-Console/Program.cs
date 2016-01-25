@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-using System.Windows.Forms;
-using System.IO;
-using CommandLine;
+﻿using CommandLine;
 using CommandLine.Text;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace searchIEEE
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             var options = new Options();
@@ -77,6 +74,7 @@ namespace searchIEEE
             String author = fvi.CompanyName;
             String version = fvi.FileVersion;
             String Copyright = fvi.LegalCopyright;
+            String AppName = Path.GetFileName(fvi.FileName);
 
             var help = new HelpText
             {
@@ -85,7 +83,7 @@ namespace searchIEEE
                 AdditionalNewLineAfterOption = true,
                 AddDashesToOption = true
             };
-            help.AddPreOptionsLine("Usage: app [-s term] [-a]");
+            help.AddPreOptionsLine("Usage: " + AppName + " [-s term] [-a]");
             help.AddOptions(this);
             help.AddPostOptionsLine("The databases must be initialized by the GUI version.");
             return help;

@@ -366,15 +366,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:searchIEEE"
-        "ProductCode" = "8:{DC26B1FD-413E-4EB4-B7F9-0625C8F16E43}"
-        "PackageCode" = "8:{D6FBD7B3-CD12-4823-A0E0-A481AE021BB2}"
+        "ProductCode" = "8:{439A42AC-C802-4AF1-A2A6-5936B2CFE735}"
+        "PackageCode" = "8:{85612D1B-7AB6-4874-8360-58B87F7B0DDA}"
         "UpgradeCode" = "8:{B99F326C-2177-4F98-A9F2-1571B1CA7FCB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.4"
+        "ProductVersion" = "8:1.1.5"
         "Manufacturer" = "8:Eddy Beaupré"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/EddyBeaupre/searchIEEE"
@@ -902,7 +902,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_144CA632066746548DC148A19342B344"
             {
-            "SourcePath" = "8:..\\searchIEEE-Console\\obj\\Debug\\searchIEEE-Console.exe"
+            "SourcePath" = "8:..\\searchIEEE-Console\\obj\\Release\\searchIEEE-Console.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E9A18A99A70D4B1DBA8C09256829CB17"
@@ -930,7 +930,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FBAE787FECF74BBA906CC7A4E749CFFF"
             {
-            "SourcePath" = "8:..\\searchIEEE\\obj\\Debug\\searchIEEE.exe"
+            "SourcePath" = "8:..\\searchIEEE\\obj\\Release\\searchIEEE.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E9A18A99A70D4B1DBA8C09256829CB17"
