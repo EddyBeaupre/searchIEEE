@@ -18,8 +18,7 @@ The configure button can be used to change the URL used to fetch the databases, 
 Command line Usage
 ------------------
 
-    %ProgramFiles(x86)%\Eddy Beaupré\searchIEEE\searchIEEE-Console.exe
-    searchIEEE 1.1.5.0
+    searchIEEE 1.3.0.0
     Copyright ©  2016 Eddy Beaupré
     Usage: searchIEEE-Console.exe [-s term] [-a]
     
@@ -28,11 +27,8 @@ Command line Usage
       -a, --all       Show all entries.
     
       --help          Display this help screen.
-    
-    
-    The databases must be initialized by the GUI version.
 
-The GUI must have been run at least once to download the databases before the command line version can be used. Results are printed in CSV format:
+Since version 1.3, the command line version is also able to initialize the databases if needed. Results are printed in CSV format:
 
     <ID>,<ASSIGNMENT>,<DATABASE>,<ORGANISATION NAME>,<ORGANISATION ADDRESS>
 
