@@ -200,7 +200,6 @@ namespace searchIEEE
             };
             help.AddPreOptionsLine("Usage: " + AppName + " [-s term] [-a]");
             help.AddOptions(this);
-            help.AddPostOptionsLine("The databases must be initialized by the GUI version.");
             return help;
         }
     }
