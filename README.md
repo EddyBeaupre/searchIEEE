@@ -18,7 +18,6 @@ The configure button can be used to change the URL used to fetch the databases, 
 Command line Usage
 ------------------
 
-    %ProgramFiles(x86)%\Eddy Beaupré\searchIEEE\searchIEEE-Console.exe
     searchIEEE 1.3.0.0
     Copyright ©  2016 Eddy Beaupré
     Usage: searchIEEE-Console.exe [-s term] [-a]
