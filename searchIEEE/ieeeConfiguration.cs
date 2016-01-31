@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using searchIEEE.Configuration;
 
 namespace searchIEEE
 {
@@ -22,27 +23,26 @@ namespace searchIEEE
 
         private void ieeeConfiguration_Load(object sender, EventArgs e)
         {
-            ieeeMAL.Text = Properties.Settings.Default.IEEE_MAL;
-            ieeeMAM.Text = Properties.Settings.Default.IEEE_MAM;
-            ieeeMAS.Text = Properties.Settings.Default.IEEE_MAS;
-            ieeeIAB.Text = Properties.Settings.Default.IEEE_IAB;
-            ieeeCID.Text = Properties.Settings.Default.IEEE_CID;
-            ieeeEth.Text = Properties.Settings.Default.IEEE_Ethertype;
-            ieeeMID.Text = Properties.Settings.Default.IEEE_Manufacturer;
-            ieeeOID.Text = Properties.Settings.Default.IEEE_Operator;
+            ieeeMAL.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAL);
+            ieeeMAM.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAM);
+            ieeeMAS.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAS);
+            ieeeIAB.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_IAB);
+            ieeeCID.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_CID);
+            ieeeEth.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Ethertype);
+            ieeeMID.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Manufacturer);
+            ieeeOID.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Operator);
         }
 
         private void configDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.IEEE_MAL = ieeeMAL.Text;
-            Properties.Settings.Default.IEEE_MAM = ieeeMAM.Text;
-            Properties.Settings.Default.IEEE_MAS = ieeeMAS.Text;
-            Properties.Settings.Default.IEEE_IAB = ieeeIAB.Text;
-            Properties.Settings.Default.IEEE_CID = ieeeCID.Text;
-            Properties.Settings.Default.IEEE_Ethertype = ieeeEth.Text;
-            Properties.Settings.Default.IEEE_Manufacturer = ieeeMID.Text;
-            Properties.Settings.Default.IEEE_Operator = ieeeOID.Text;
-            Properties.Settings.Default.Save();
+            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAL,ieeeMAL.Text);
+            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAM, ieeeMAM.Text);
+            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAS, ieeeMAS.Text);
+            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_IAB, ieeeIAB.Text);
+            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_CID, ieeeCID.Text);
+            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Ethertype, ieeeEth.Text);
+            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Manufacturer, ieeeMID.Text);
+            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Operator, ieeeOID.Text);
             if (callbackHandler != null)
             {
                 callbackHandler();

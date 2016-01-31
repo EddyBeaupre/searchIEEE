@@ -1,14 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Windows.Forms;
+using searchIEEE.CustomExtensions;
 
 namespace searchIEEE
 {
     public partial class ieee : Form
     {
-        ieeeCSV ieeeCSV = null;
+        searchIEEE.Records.IeeeRecordData ieeeCSV = null;
+        public static Configuration.Configuration configSource = new Configuration.Configuration(readConfiguration, saveConfiguration);
+
+        public struct DatabaseInfo
+        {
+            public String fileName;
+            public Uri Uri;
+
+            public DatabaseInfo(String f, String u)
+            {
+                fileName = f;
+                Uri = new Uri(u);
+            }
+
+            public DatabaseInfo(String f, Uri u)
+            {
+                fileName = f;
+                Uri = u;
+            }
+        }
 
         public ieee()
         {
@@ -16,35 +38,112 @@ namespace searchIEEE
             toolStripProgressBar1.Visible = false;
         }
 
-        private void ieee_Load(object sender, EventArgs e)
+        public static Configuration.ConfigurationData readConfiguration()
         {
-            if (!Directory.Exists(Path.GetDirectoryName(Application.UserAppDataPath)))
+            Configuration.ConfigurationData configuration = new Configuration.ConfigurationData();
+            try
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(Application.UserAppDataPath));
+                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Configuration.ConfigurationData));
+                PCLStorage.IFile file = PCLStorage.FileSystem.Current.RoamingStorage.GetFileAsync(@"searchIEEE.XML").Result;
+                using (Stream stream = file.OpenAsync(PCLStorage.FileAccess.Read).Result)
+                {
+                    configuration = (Configuration.ConfigurationData)reader.Deserialize(stream);
+                }
+                return (configuration);
             }
-
-            if (Properties.Settings.Default.IEEE_LocalDB == String.Empty)
+            catch
             {
-                Properties.Settings.Default.IEEE_LocalDB = Path.Combine(Path.GetDirectoryName(Application.UserAppDataPath), @"ieeeLocalDB.xml");
-                Properties.Settings.Default.Save();
+                throw new PCLStorage.Exceptions.FileNotFoundException("Not Found");
             }
+        }
 
-            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
-            ToolTip1.SetToolTip(this.searchBox1, "Enter search term, then press ENTER to search\nTo see the whole database just press ENTER without entering anything.");
+        public static void saveConfiguration(Configuration.ConfigurationData configuration)
+        {
+            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(Configuration.ConfigurationData));
 
-            ieeeCSV = new ieeeCSV();
-            ieeeCSV.Add(@"ieeeMAL.csv", Properties.Settings.Default.IEEE_MAL);
-            ieeeCSV.Add(@"ieeeMAM.csv", Properties.Settings.Default.IEEE_MAM);
-            ieeeCSV.Add(@"ieeeMAS.csv", Properties.Settings.Default.IEEE_MAS);
-            ieeeCSV.Add(@"ieeeIAB.csv", Properties.Settings.Default.IEEE_IAB);
-            ieeeCSV.Add(@"ieeeCID.csv", Properties.Settings.Default.IEEE_CID);
-            ieeeCSV.Add(@"ieeeETH.csv", Properties.Settings.Default.IEEE_Ethertype);
-            ieeeCSV.Add(@"ieeeMID.csv", Properties.Settings.Default.IEEE_Manufacturer);
-            ieeeCSV.Add(@"ieeeOID.csv", Properties.Settings.Default.IEEE_Operator);
+            PCLStorage.IFile file = PCLStorage.FileSystem.Current.RoamingStorage.CreateFileAsync(@"searchIEEE.XML", PCLStorage.CreationCollisionOption.ReplaceExisting).Result;
+            using (Stream stream = file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite).Result)
+            {
+                writer.Serialize(stream, configuration);
+            }
+        }
+
+        private async void ieee_init(Boolean doReset)
+        {
+            int Count = 0;
+            List<Configuration.Configuration.DatabaseInfo> databasesInfo = new List<Configuration.Configuration.DatabaseInfo>();
+            
+            if (this.ieeeCSV != null)
+            {
+                this.ieeeCSV.clearDataBases();
+            }
+            else
+            {
+                this.ieeeCSV = new searchIEEE.Records.IeeeRecordData();
+            }
+            
+            databasesInfo.Add(configSource.getConfig(Configuration.Configuration.ConfigurationElements.IEEE_MAL));
+            databasesInfo.Add(configSource.getConfig(Configuration.Configuration.ConfigurationElements.IEEE_MAM));
+            databasesInfo.Add(configSource.getConfig(Configuration.Configuration.ConfigurationElements.IEEE_MAS));
+            databasesInfo.Add(configSource.getConfig(Configuration.Configuration.ConfigurationElements.IEEE_IAB));
+            databasesInfo.Add(configSource.getConfig(Configuration.Configuration.ConfigurationElements.IEEE_CID));
+            databasesInfo.Add(configSource.getConfig(Configuration.Configuration.ConfigurationElements.IEEE_Ethertype));
+            databasesInfo.Add(configSource.getConfig(Configuration.Configuration.ConfigurationElements.IEEE_Manufacturer));
+            databasesInfo.Add(configSource.getConfig(Configuration.Configuration.ConfigurationElements.IEEE_Operator));
+
             toolStripLabel1.Text = "Loading databases...";
             toolStripProgressBar1.Visible = true;
             searchBox1.Enabled = false;
-            threadLauncher(this.ieeeCSV.loadAll, loadAllCallback);
+
+            foreach (Configuration.Configuration.DatabaseInfo databaseInfo in databasesInfo)
+            {
+                toolStripLabel1.Text = String.Format("Loading databases {0} of {1}...", (Count++ + 1).ToString(), databasesInfo.Count.ToString());
+                PCLStorage.IFile file = null;
+                try
+                {
+                    if (doReset)
+                        throw new PCLStorage.Exceptions.FileNotFoundException("Resetting database");
+
+                    file = await PCLStorage.FileSystem.Current.RoamingStorage.GetFileAsync(databaseInfo.fileName);
+                    
+                    using (Stream stream = await file.OpenAsync(PCLStorage.FileAccess.Read))
+                    {
+                        Byte[] b = new Byte[stream.Length];
+
+                        if (stream.Read(b, 0, b.Length) > 0)
+                            ieeeCSV.Add(b.GetString());
+                    }
+                }
+                catch
+                {
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+                    using (HttpClient client = new HttpClient())
+                    {
+                        String payLoad = await client.GetStringAsync(databaseInfo.Uri);
+                        ieeeCSV.Add(payLoad);
+
+                        file = await PCLStorage.FileSystem.Current.RoamingStorage.CreateFileAsync(databaseInfo.fileName, PCLStorage.CreationCollisionOption.ReplaceExisting);
+                        using (Stream stream = await file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite))
+                        {
+                            Byte[] b = payLoad.GetBytes();
+                            stream.Write(b, 0, b.Length);
+                        }
+                        configSource.setTimeStamp();
+                    }
+                }
+            }
+
+            toolStripLabel1.Text = ieeeCSV.Count().ToString() + " entries avalables.";
+            searchBox1.Enabled = true;
+            toolStripProgressBar1.Visible = false;
+        }
+
+        private void ieee_Load(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+            ToolTip1.SetToolTip(this.searchBox1, "Enter search term, then press ENTER to search\nTo see the whole database just press ENTER without entering anything.");
+
+            ieee_init(false);
         }
 
         private void searchBox1_KeyDown(object sender, KeyEventArgs e)
@@ -61,7 +160,7 @@ namespace searchIEEE
 
         private void search(String Needle)
         {
-            List<IeeeRecord> results = ieeeCSV.search(Needle);
+            List<searchIEEE.Records.IeeeRecordDataItem> results = ieeeCSV.search(Needle);
 
             if (results != null)
             {
@@ -73,7 +172,7 @@ namespace searchIEEE
 
         private void search(String Needle, ThreadWorkerCallback callBack)
         {
-            List<IeeeRecord> results = ieeeCSV.search(Needle);
+            List<searchIEEE.Records.IeeeRecordDataItem> results = ieeeCSV.search(Needle);
 
             if (results != null)
             {
@@ -92,21 +191,7 @@ namespace searchIEEE
                 this.Invoke(d, new object[] { });
             }
             else {
-                this.ieeeCSV.deleteAll();
-                this.ieeeCSV.Dispose();
-                this.ieeeCSV = new ieeeCSV();
-                ieeeCSV.Add(@"ieeeMAL.csv", Properties.Settings.Default.IEEE_MAL);
-                ieeeCSV.Add(@"ieeeMAM.csv", Properties.Settings.Default.IEEE_MAM);
-                ieeeCSV.Add(@"ieeeMAS.csv", Properties.Settings.Default.IEEE_MAS);
-                ieeeCSV.Add(@"ieeeIAB.csv", Properties.Settings.Default.IEEE_IAB);
-                ieeeCSV.Add(@"ieeeCID.csv", Properties.Settings.Default.IEEE_CID);
-                ieeeCSV.Add(@"ieeeETH.csv", Properties.Settings.Default.IEEE_Ethertype);
-                ieeeCSV.Add(@"ieeeMID.csv", Properties.Settings.Default.IEEE_Manufacturer);
-                ieeeCSV.Add(@"ieeeOID.csv", Properties.Settings.Default.IEEE_Operator);
-                toolStripLabel1.Text = "Loading databases...";
-                toolStripProgressBar1.Visible = true;
-                searchBox1.Enabled = false;
-                threadLauncher(this.ieeeCSV.loadAll, loadAllCallback);
+                ieee_init(true);
             }
         }
 
@@ -118,11 +203,7 @@ namespace searchIEEE
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            ieeeCSV.deleteAll();
-            toolStripLabel1.Text = "Loading databases...";
-            toolStripProgressBar1.Visible = true;
-            searchBox1.Enabled = false;
-            threadLauncher(this.ieeeCSV.loadAll, loadAllCallback);
+            ieee_init(true);
         }
 
         private delegate void ThreadWorkerCallback();
@@ -155,7 +236,7 @@ namespace searchIEEE
             action(payLoad, callback);
         }
 
-        
+
         private void searchCallback()
         {
             if (this.InvokeRequired)
@@ -184,6 +265,12 @@ namespace searchIEEE
                 searchBox1.Enabled = true;
                 toolStripProgressBar1.Visible = false;
             }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            ieeeAbout aboutDialog = new ieeeAbout();
+            aboutDialog.Show();
         }
     }
 }

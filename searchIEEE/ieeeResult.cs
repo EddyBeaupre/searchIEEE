@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using searchIEEE.CustomExtensions;
 
 namespace searchIEEE
 {
     public partial class ieeeResult : Form
     {
-        private List<IeeeRecord> dataResults = null;
+        private List<searchIEEE.Records.IeeeRecordDataItem> dataResults = null;
 
-        public ieeeResult(List<IeeeRecord> dataResults)
+        public ieeeResult(List<searchIEEE.Records.IeeeRecordDataItem> dataResults)
         {
             try
             {
@@ -80,9 +81,9 @@ namespace searchIEEE
 
                     
 
-                    foreach (IeeeRecord dataRow in this.dataResults)
+                    foreach (searchIEEE.Records.IeeeRecordDataItem dataRow in this.dataResults)
                     {
-                        ouiDatabaseView.Rows.Add(Count++, dataRow.Oid64, dataRow.Registry, dataRow.OrganizationName, dataRow.OrganizationAddress);
+                        ouiDatabaseView.Rows.Add(Count++, dataRow.Assignment.GetOid64(), dataRow.Registry, dataRow.OrganizationName, dataRow.OrganizationAddress);
                     }
                 }
                 ouiDatabaseView.Visible = true;
