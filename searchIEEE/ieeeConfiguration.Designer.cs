@@ -1,6 +1,6 @@
 ﻿namespace searchIEEE
 {
-    partial class ieeeConfiguration
+    partial class ConfigurationDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -209,8 +209,8 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "ieeeConfiguration";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.configDialog_FormClosing);
-            this.Load += new System.EventHandler(this.ieeeConfiguration_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConfigurationDialog_FormClosing);
+            this.Load += new System.EventHandler(this.ConfigurationDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

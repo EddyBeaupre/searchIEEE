@@ -9,9 +9,9 @@ namespace searchIEEE
 {
     public partial class ieeeResult : Form
     {
-        private List<searchIEEE.Records.IeeeRecordDataItem> dataResults = null;
+        private List<searchIEEE.Records.Items> dataResults = null;
 
-        public ieeeResult(List<searchIEEE.Records.IeeeRecordDataItem> dataResults)
+        public ieeeResult(List<searchIEEE.Records.Items> dataResults)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace searchIEEE
 
                     
 
-                    foreach (searchIEEE.Records.IeeeRecordDataItem dataRow in this.dataResults)
+                    foreach (searchIEEE.Records.Items dataRow in this.dataResults)
                     {
                         ouiDatabaseView.Rows.Add(Count++, dataRow.Assignment.GetOid64(), dataRow.Registry, dataRow.OrganizationName, dataRow.OrganizationAddress);
                     }

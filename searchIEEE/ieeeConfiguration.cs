@@ -4,45 +4,41 @@ using searchIEEE.Configuration;
 
 namespace searchIEEE
 {
-    public partial class ieeeConfiguration : Form
+    public partial class ConfigurationDialog : Form
     {
-        public delegate void CallbackHandler();
-        private CallbackHandler callbackHandler = null;
+        public delegate void Callback();
+        private Callback callbackHandler = null;
+        private Data configuration = null;
 
-
-        public ieeeConfiguration()
-        {
-            InitializeComponent();
-        }
-
-        public ieeeConfiguration(CallbackHandler callbackHandler)
+        public ConfigurationDialog(Callback callbackHandler, ref Data configuration)
         {
             InitializeComponent();
             this.callbackHandler = callbackHandler;
+            this.configuration = configuration;
         }
 
-        private void ieeeConfiguration_Load(object sender, EventArgs e)
+        private void ConfigurationDialog_Load(object sender, EventArgs e)
         {
-            ieeeMAL.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAL);
-            ieeeMAM.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAM);
-            ieeeMAS.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAS);
-            ieeeIAB.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_IAB);
-            ieeeCID.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_CID);
-            ieeeEth.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Ethertype);
-            ieeeMID.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Manufacturer);
-            ieeeOID.Text = ieee.configSource.getConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Operator);
+            ieeeMAL.Text = Manager.getConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_MAL);
+            ieeeMAM.Text = Manager.getConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_MAM);
+            ieeeMAS.Text = Manager.getConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_MAS);
+            ieeeIAB.Text = Manager.getConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_IAB);
+            ieeeCID.Text = Manager.getConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_CID);
+            ieeeEth.Text = Manager.getConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_Ethertype);
+            ieeeMID.Text = Manager.getConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_Manufacturer);
+            ieeeOID.Text = Manager.getConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_Operator);
         }
 
-        private void configDialog_FormClosing(object sender, FormClosingEventArgs e)
+        private void ConfigurationDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAL,ieeeMAL.Text);
-            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAM, ieeeMAM.Text);
-            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_MAS, ieeeMAS.Text);
-            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_IAB, ieeeIAB.Text);
-            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_CID, ieeeCID.Text);
-            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Ethertype, ieeeEth.Text);
-            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Manufacturer, ieeeMID.Text);
-            ieee.configSource.setConfigValue(Configuration.Configuration.ConfigurationElements.IEEE_Operator, ieeeOID.Text);
+            Manager.setConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_MAL,ieeeMAL.Text);
+            Manager.setConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_MAM, ieeeMAM.Text);
+            Manager.setConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_MAS, ieeeMAS.Text);
+            Manager.setConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_IAB, ieeeIAB.Text);
+            Manager.setConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_CID, ieeeCID.Text);
+            Manager.setConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_Ethertype, ieeeEth.Text);
+            Manager.setConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_Manufacturer, ieeeMID.Text);
+            Manager.setConfigurationElements(ref configuration, Manager.ConfigurationElements.IEEE_Operator, ieeeOID.Text);
             if (callbackHandler != null)
             {
                 callbackHandler();

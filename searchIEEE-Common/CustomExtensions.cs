@@ -8,7 +8,7 @@ namespace searchIEEE.CustomExtensions
         public static Byte[] GetBytes(this String payLoad)
         {
             byte[] bytes = new byte[payLoad.Length * sizeof(char)];
-            System.Buffer.BlockCopy(payLoad.ToCharArray(), 0, bytes, 0, bytes.Length);
+            Buffer.BlockCopy(payLoad.ToCharArray(), 0, bytes, 0, bytes.Length);
             return bytes;
         }
 
@@ -37,6 +37,15 @@ namespace searchIEEE.CustomExtensions
                 return (UInt64.MaxValue);
             }
         }
+    }
 
+    public static class ByteExtension
+    {
+        public static String GetString(this Byte[] payLoad)
+        {
+            char[] chars = new char[payLoad.Length / sizeof(char)];
+            Buffer.BlockCopy(payLoad, 0, chars, 0, payLoad.Length);
+            return new string(chars);
+        }
     }
 }

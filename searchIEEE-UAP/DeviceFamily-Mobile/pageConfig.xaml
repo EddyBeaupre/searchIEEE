@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="searchIEEE.pageConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:searchIEEE"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <!-- Configuration page for mobile devices -->
+    <ScrollViewer>
+        <StackPanel HorizontalAlignment="Stretch">
+        <TextBlock Margin="10" x:Uid="pageConfig_TextBlock_Header" FontWeight="Bold" Text="Configuration" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock x:Uid="pageConfig_TextBlock_IEEE_MAL" Text="Large Address Block"/>
+            <TextBox x:Name="TextBox_IEEE_MAL" TextWrapping="Wrap"/>
+
+            <TextBlock x:Uid="pageConfig_TextBlock_IEEE_MAM" Text="Medium Address Block"/>
+            <TextBox x:Name="TextBox_IEEE_MAM" TextWrapping="Wrap"/>
+
+            <TextBlock x:Uid="pageConfig_TextBlock_IEEE_MAS" Text="Small Address Block"/>
+            <TextBox x:Name="TextBox_IEEE_MAS" TextWrapping="Wrap"/>
+
+            <TextBlock x:Uid="pageConfig_TextBlock_IEEE_IAB" Text="Individual Address Block"/>
+            <TextBox x:Name="TextBox_IEEE_IAB" TextWrapping="Wrap"/>
+
+            <TextBlock x:Uid="pageConfig_TextBlock_IEEE_CID" Text="Company ID"/>
+            <TextBox x:Name="TextBox_IEEE_CID" TextWrapping="Wrap"/>
+
+            <TextBlock x:Uid="pageConfig_TextBlock_IEEE_Ethertype" Text="Ethertypes ID"/>
+            <TextBox x:Name="TextBox_IEEE_Ethertype" TextWrapping="Wrap"/>
+
+            <TextBlock x:Uid="pageConfig_TextBlock_IEEE_Manufacturer" Text="Manufacturer ID"/>
+            <TextBox x:Name="TextBox_IEEE_Manufacturer" TextWrapping="Wrap"/>
+
+            <TextBlock x:Uid="pageConfig_TextBlock_IEEE_Operator" Text="Operator ID"/>
+            <TextBox x:Name="TextBox_IEEE_Operator" TextWrapping="Wrap"/>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button FontWeight="Bold" x:Name="saveButton" FontFamily="Segoe MDL2 Assets" Content="&#xE74E;" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Click="saveButton_Click"/>
+                <Button FontWeight="Bold" x:Name="cancelButton" FontFamily="Segoe MDL2 Assets" Content="&#xE711;" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Click="cancelButton_Click"/>
+                <Button FontWeight="Bold" x:Name="undoButton" FontFamily="Segoe MDL2 Assets" Content="&#xE7A7;" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Click="undoButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

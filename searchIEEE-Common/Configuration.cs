@@ -1,15 +1,25 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace searchIEEE.Configuration
 {
-    public class Configuration
+    public class Data
     {
-        public ConfigurationData configuration = null;
+        public String IEEE_MAL;
+        public String IEEE_MAM;
+        public String IEEE_MAS;
+        public String IEEE_IAB;
+        public String IEEE_CID;
+        public String IEEE_Ethertype;
+        public String IEEE_Manufacturer;
+        public String IEEE_Operator;
+        public String TimeStamp;
+    }
 
+    public class Manager
+    {
         public enum ConfigurationElements { IEEE_MAL, IEEE_MAM, IEEE_MAS, IEEE_IAB, IEEE_CID, IEEE_Ethertype, IEEE_Manufacturer, IEEE_Operator }
-
-        private Func<ConfigurationData> readConfiguration;
-        private Action<ConfigurationData> writeConfiguration;
 
         public struct DatabaseInfo
         {
@@ -29,43 +39,127 @@ namespace searchIEEE.Configuration
             }
         }
 
-        public DateTime getTimeStamp()
+        public static DateTime getTimeStamp(ref Data configuration)
         {
             return (DateTime.Parse(configuration.TimeStamp));
         }
 
-        public void setTimeStamp()
+        public static void setTimeStamp(ref Data configuration)
         {
             configuration.TimeStamp = DateTime.Now.ToString("r");
-            this.writeConfiguration(configuration);
+            saveConfiguration(ref configuration);
         }
 
-        public Configuration(Func<ConfigurationData> readConfiguration, Action<ConfigurationData> writeConfiguration)
+        public static Task<Data> loadConfigurationAsync()
         {
-            this.readConfiguration = readConfiguration;
-            this.writeConfiguration = writeConfiguration;
+            return (Task.Run<Data>(() => readConfiguration()));
+        }
 
+        /*
+        public static void loadConfiguration(ref Data configuration)
+        {
             try
             {
-                configuration = this.readConfiguration();
+                configuration = readConfiguration(ref configuration);
             }
             catch
             {
-                configuration = new ConfigurationData();
-                configuration.IEEE_MAL = "https://standards.ieee.org/develop/regauth/oui/oui.csv";
-                configuration.IEEE_MAM = "https://standards.ieee.org/develop/regauth/oui28/mam.csv";
-                configuration.IEEE_MAS = "https://standards.ieee.org/develop/regauth/oui36/oui36.csv";
-                configuration.IEEE_IAB = "https://standards.ieee.org/develop/regauth/iab/iab.csv";
-                configuration.IEEE_CID = "https://standards.ieee.org/develop/regauth/cid/cid.csv";
-                configuration.IEEE_Ethertype = "https://standards.ieee.org/develop/regauth/ethertype/eth.csv";
-                configuration.IEEE_Manufacturer = "https://standards.ieee.org/develop/regauth/manid/manid.csv";
-                configuration.IEEE_Operator = "https://standards.ieee.org/develop/regauth/bopid/opid.csv";
-                configuration.TimeStamp = DateTime.Now.ToString("r");
-                this.writeConfiguration(configuration);
+                configuration = defaultConfiguration(ref configuration);
+            }
+        }
+        */
+
+        public static Data defaultConfiguration()
+        {
+            Data configuration = new Data();
+
+            configuration.IEEE_MAL = "http://standards.ieee.org/develop/regauth/oui/oui.csv";
+            configuration.IEEE_MAM = "http://standards.ieee.org/develop/regauth/oui28/mam.csv";
+            configuration.IEEE_MAS = "http://standards.ieee.org/develop/regauth/oui36/oui36.csv";
+            configuration.IEEE_IAB = "http://standards.ieee.org/develop/regauth/iab/iab.csv";
+            configuration.IEEE_CID = "http://standards.ieee.org/develop/regauth/cid/cid.csv";
+            configuration.IEEE_Ethertype = "http://standards.ieee.org/develop/regauth/ethertype/eth.csv";
+            configuration.IEEE_Manufacturer = "http://standards.ieee.org/develop/regauth/manid/manid.csv";
+            configuration.IEEE_Operator = "http://standards.ieee.org/develop/regauth/bopid/opid.csv";
+            configuration.TimeStamp = DateTime.Now.ToString("r");
+            saveConfiguration(ref configuration);
+            return (configuration);
+        }
+
+        /*
+        public static Data defaultConfiguration(ref Data configuration)
+        {
+            if (configuration == null)
+            {
+                configuration = new Data();
+            }
+
+            configuration.IEEE_MAL = "http://standards.ieee.org/develop/regauth/oui/oui.csv";
+            configuration.IEEE_MAM = "http://standards.ieee.org/develop/regauth/oui28/mam.csv";
+            configuration.IEEE_MAS = "http://standards.ieee.org/develop/regauth/oui36/oui36.csv";
+            configuration.IEEE_IAB = "http://standards.ieee.org/develop/regauth/iab/iab.csv";
+            configuration.IEEE_CID = "http://standards.ieee.org/develop/regauth/cid/cid.csv";
+            configuration.IEEE_Ethertype = "http://standards.ieee.org/develop/regauth/ethertype/eth.csv";
+            configuration.IEEE_Manufacturer = "http://standards.ieee.org/develop/regauth/manid/manid.csv";
+            configuration.IEEE_Operator = "http://standards.ieee.org/develop/regauth/bopid/opid.csv";
+            configuration.TimeStamp = DateTime.Now.ToString("r");
+            saveConfiguration(ref configuration);
+            return (configuration);
+        }
+        */
+
+        public static Data readConfiguration()
+        {
+            try
+            {
+                Data configuration = new Data();
+
+                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Data));
+                PCLStorage.IFile file = PCLStorage.FileSystem.Current.RoamingStorage.GetFileAsync(@"searchIEEE.XML").Result;
+                using (Stream stream = file.OpenAsync(PCLStorage.FileAccess.Read).Result)
+                {
+                    configuration = (Data)reader.Deserialize(stream);
+                }
+                return (configuration);
+            }
+            catch
+            {
+                return(defaultConfiguration());
             }
         }
 
-        public DatabaseInfo getConfig(ConfigurationElements e)
+        /*
+        public static Data readConfiguration(ref Data configuration)
+        {
+            try
+            {
+                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Data));
+                PCLStorage.IFile file = PCLStorage.FileSystem.Current.RoamingStorage.GetFileAsync(@"searchIEEE.XML").Result;
+                using (Stream stream = file.OpenAsync(PCLStorage.FileAccess.Read).Result)
+                {
+                    configuration = (Data)reader.Deserialize(stream);
+                }
+                return (configuration);
+            }
+            catch
+            {
+                throw new PCLStorage.Exceptions.FileNotFoundException("Not Found");
+            }
+        }
+        */
+
+        public static void saveConfiguration(ref Data configuration)
+        {
+            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(Data));
+
+            PCLStorage.IFile file = PCLStorage.FileSystem.Current.RoamingStorage.CreateFileAsync(@"searchIEEE.XML", PCLStorage.CreationCollisionOption.ReplaceExisting).Result;
+            using (Stream stream = file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite).Result)
+            {
+                writer.Serialize(stream, configuration);
+            }
+        }
+
+        public static DatabaseInfo getDatabaseInfo(ref Data configuration, ConfigurationElements e)
         {
             switch (e)
             {
@@ -89,7 +183,7 @@ namespace searchIEEE.Configuration
             return (new DatabaseInfo(String.Empty, String.Empty));
         }
 
-        public String getConfigValue(ConfigurationElements e)
+        public static String getConfigurationElements(ref Data configuration, ConfigurationElements e)
         {
             switch (e)
             {
@@ -113,7 +207,7 @@ namespace searchIEEE.Configuration
             return (String.Empty);
         }
 
-        public void setConfigValue(ConfigurationElements e, String s)
+        public static void setConfigurationElements(ref Data configuration, ConfigurationElements e, String s)
         {
             switch (e)
             {
@@ -142,7 +236,7 @@ namespace searchIEEE.Configuration
                     configuration.IEEE_Operator = s;
                     break;
             }
-            this.writeConfiguration(configuration);
+            saveConfiguration(ref configuration);
         }
     }
 }

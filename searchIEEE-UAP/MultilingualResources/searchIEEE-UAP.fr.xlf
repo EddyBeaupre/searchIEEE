@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="fr" original="SEARCHIEEE-UAP/STRINGS/EN-US/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.1573.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="SEARCHIEEE-UAP/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="MainPage_ConfigTextBlock.Text" translate="yes" xml:space="preserve">
+          <source>Configure</source>
+          <target state="final">Configurer</target>
+        </trans-unit>
+        <trans-unit id="MainPage_SearchTextBlock.Text" translate="yes" xml:space="preserve">
+          <source>Search</source>
+          <target state="final">Rechercher</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_IEEE_CID.Text" translate="yes" xml:space="preserve">
+          <source>Company ID :</source>
+          <target state="final">ID de la société :</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_IEEE_Ethertype.Text" translate="yes" xml:space="preserve">
+          <source>Ethertypes ID :</source>
+          <target state="final">ID d'EtherTypes :</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_IEEE_IAB.Text" translate="yes" xml:space="preserve">
+          <source>Individual Address Block :</source>
+          <target state="final">Bloc d'adressage individuels :</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_IEEE_MAL.Text" translate="yes" xml:space="preserve">
+          <source>Large Address Block :</source>
+          <target state="final">Bloc d'adressage étendu :</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_IEEE_MAM.Text" translate="yes" xml:space="preserve">
+          <source>Medium Address Block :</source>
+          <target state="final">Bloc d'adressage moyen :</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_IEEE_Manufacturer.Text" translate="yes" xml:space="preserve">
+          <source>Manufacturer ID :</source>
+          <target state="final">ID du fabricant :</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_IEEE_MAS.Text" translate="yes" xml:space="preserve">
+          <source>Small Address Block :</source>
+          <target state="final">Bloc d'adressage petit :</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_IEEE_Operator.Text" translate="yes" xml:space="preserve">
+          <source>Operator ID :</source>
+          <target state="final">ID de l'opérateur :</target>
+        </trans-unit>
+        <trans-unit id="MainPage_ErrorDownload" translate="yes" xml:space="preserve">
+          <source>Error while downloading databases, check your internet connexion and settings.</source>
+          <target state="final">Erreur lors du téléchargement des bases de données, vérifiez vos paramètres et connexion internet.</target>
+        </trans-unit>
+        <trans-unit id="MainPage_ErrorHeader" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <target state="final">Erreur</target>
+        </trans-unit>
+        <trans-unit id="MainPage_ErrorOK" translate="yes" xml:space="preserve">
+          <source>Ok</source>
+          <target state="final">OK</target>
+        </trans-unit>
+        <trans-unit id="MainPage_RecordLoaderStart" translate="yes" xml:space="preserve">
+          <source>Loaded {0} of {1} databases</source>
+          <target state="final">Chargé {0} de {1} bases de données</target>
+        </trans-unit>
+        <trans-unit id="MainPage_RecordLoaderStop" translate="yes" xml:space="preserve">
+          <source>Loaded {0} of {1} databases, {2} entries availables</source>
+          <target state="final">Chargé {0} de {1} bases de données, {2} entrées disponibles</target>
+        </trans-unit>
+        <trans-unit id="MainPage_RecordLoaderUpdate" translate="yes" xml:space="preserve">
+          <source>Loaded {0} of {1} databases</source>
+          <target state="final">Chargé {0} de {1} bases de données</target>
+        </trans-unit>
+        <trans-unit id="MainPage_SearchEmpty" translate="yes" xml:space="preserve">
+          <source>No results found.</source>
+          <target state="final">Aucun résultat trouvé.</target>
+        </trans-unit>
+        <trans-unit id="MainPage_SearchProgress" translate="yes" xml:space="preserve">
+          <source>Searching...</source>
+          <target state="final">Recherche en cours...</target>
+        </trans-unit>
+        <trans-unit id="MainPage_SearchResult" translate="yes" xml:space="preserve">
+          <source>{0} results found.</source>
+          <target state="final">{0} résultats trouvés.</target>
+        </trans-unit>
+        <trans-unit id="MainPage_searchBox.CueBannerText" translate="yes" xml:space="preserve">
+          <source>Search...</source>
+          <target state="final">Recherche...</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_DialogConfigReset" translate="yes" xml:space="preserve">
+          <source>Would you like to load default values?</source>
+          <target state="final">Vous souhaitez charger les valeurs par défaut ?</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_DialogConfigResetTitle" translate="yes" xml:space="preserve">
+          <source>Reset configuration.</source>
+          <target state="final">Réinitialiser la configuration.</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_DialogConfigUpdate" translate="yes" xml:space="preserve">
+          <source>Would you like to reload databases?</source>
+          <target state="final">Vous souhaitez recharger les bases de données ?</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_DialogConfigUpdateTitle" translate="yes" xml:space="preserve">
+          <source>Configuration updated.</source>
+          <target state="final">Configuration mise à jour.</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_DialogNo" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="final">Non</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_DialogYes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="final">Oui</target>
+        </trans-unit>
+        <trans-unit id="pageConfig_TextBlock_Header.Text" translate="yes" xml:space="preserve">
+          <source>Configuration</source>
+          <target state="final">Configuration</target>
+        </trans-unit>
+        <trans-unit id="pageResult_Assignment" translate="yes" xml:space="preserve">
+          <source>Assignment : {0}</source>
+          <target state="final">Assignation : {0}</target>
+        </trans-unit>
+        <trans-unit id="pageResult_DialogClose" translate="yes" xml:space="preserve">
+          <source>Close</source>
+          <target state="final">Fermer</target>
+        </trans-unit>
+        <trans-unit id="pageResult_DialogCopied" translate="yes" xml:space="preserve">
+          <source>Copied to clipboard :</source>
+          <target state="final">Copié dans le presse-papiers :</target>
+        </trans-unit>
+        <trans-unit id="pageResult_OrganizationAddress" translate="yes" xml:space="preserve">
+          <source>Organization Address : {0}</source>
+          <target state="final">Adresse de l'organisme : {0}</target>
+        </trans-unit>
+        <trans-unit id="pageResult_OrganizationName" translate="yes" xml:space="preserve">
+          <source>Organization Name : {0}</source>
+          <target state="final">Nom de l'organisme : {0}</target>
+        </trans-unit>
+        <trans-unit id="pageResult_Protocol" translate="yes" xml:space="preserve">
+          <source>Protocol : {0}</source>
+          <target state="final">Protocole : {0}</target>
+        </trans-unit>
+        <trans-unit id="pageResult_Registry" translate="yes" xml:space="preserve">
+          <source>Registry : {0}</source>
+          <target state="final">Registre : {0}</target>
+        </trans-unit>
+        <trans-unit id="MainPage_RecordLoaderError" translate="yes" xml:space="preserve">
+          <source>Error while loading databases.</source>
+          <target state="final">Erreur lors du chargement des bases de données.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

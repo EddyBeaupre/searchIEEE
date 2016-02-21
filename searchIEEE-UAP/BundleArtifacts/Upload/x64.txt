@@ -1,0 +1,2 @@
+MainPackage=C:\Users\eddy\Documents\Visual Studio 2015\Projects\searchIEEE\searchIEEE-UAP\bin\x64\Release\Upload\searchIEEE-UAP_1.1.0.0_x64.appx
+SymbolPackage=C:\Users\eddy\Documents\Visual Studio 2015\Projects\searchIEEE\searchIEEE-UAP\AppPackages\searchIEEE-UAP_1.1.0.0\searchIEEE-UAP_1.1.0.0_x64.appxsym

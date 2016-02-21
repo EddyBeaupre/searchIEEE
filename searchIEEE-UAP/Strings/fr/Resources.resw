@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MainPage_ConfigTextBlock.Text" xml:space="preserve">
+    <value>Configurer</value>
+  </data>
+  <data name="MainPage_SearchTextBlock.Text" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="pageConfig_TextBlock_IEEE_CID.Text" xml:space="preserve">
+    <value>ID de la société :</value>
+  </data>
+  <data name="pageConfig_TextBlock_IEEE_Ethertype.Text" xml:space="preserve">
+    <value>ID d'EtherTypes :</value>
+  </data>
+  <data name="pageConfig_TextBlock_IEEE_IAB.Text" xml:space="preserve">
+    <value>Bloc d'adressage individuels :</value>
+  </data>
+  <data name="pageConfig_TextBlock_IEEE_MAL.Text" xml:space="preserve">
+    <value>Bloc d'adressage étendu :</value>
+  </data>
+  <data name="pageConfig_TextBlock_IEEE_MAM.Text" xml:space="preserve">
+    <value>Bloc d'adressage moyen :</value>
+  </data>
+  <data name="pageConfig_TextBlock_IEEE_Manufacturer.Text" xml:space="preserve">
+    <value>ID du fabricant :</value>
+  </data>
+  <data name="pageConfig_TextBlock_IEEE_MAS.Text" xml:space="preserve">
+    <value>Bloc d'adressage petit :</value>
+  </data>
+  <data name="pageConfig_TextBlock_IEEE_Operator.Text" xml:space="preserve">
+    <value>ID de l'opérateur :</value>
+  </data>
+  <data name="MainPage_ErrorDownload" xml:space="preserve">
+    <value>Erreur lors du téléchargement des bases de données, vérifiez vos paramètres et connexion internet.</value>
+  </data>
+  <data name="MainPage_ErrorHeader" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="MainPage_ErrorOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="MainPage_RecordLoaderStart" xml:space="preserve">
+    <value>Chargé {0} de {1} bases de données</value>
+  </data>
+  <data name="MainPage_RecordLoaderStop" xml:space="preserve">
+    <value>Chargé {0} de {1} bases de données, {2} entrées disponibles</value>
+  </data>
+  <data name="MainPage_RecordLoaderUpdate" xml:space="preserve">
+    <value>Chargé {0} de {1} bases de données</value>
+  </data>
+  <data name="MainPage_SearchEmpty" xml:space="preserve">
+    <value>Aucun résultat trouvé.</value>
+  </data>
+  <data name="MainPage_SearchProgress" xml:space="preserve">
+    <value>Recherche en cours...</value>
+  </data>
+  <data name="MainPage_SearchResult" xml:space="preserve">
+    <value>{0} résultats trouvés.</value>
+  </data>
+  <data name="MainPage_searchBox.CueBannerText" xml:space="preserve">
+    <value>Recherche...</value>
+  </data>
+  <data name="pageConfig_DialogConfigReset" xml:space="preserve">
+    <value>Vous souhaitez charger les valeurs par défaut ?</value>
+  </data>
+  <data name="pageConfig_DialogConfigResetTitle" xml:space="preserve">
+    <value>Réinitialiser la configuration.</value>
+  </data>
+  <data name="pageConfig_DialogConfigUpdate" xml:space="preserve">
+    <value>Vous souhaitez recharger les bases de données ?</value>
+  </data>
+  <data name="pageConfig_DialogConfigUpdateTitle" xml:space="preserve">
+    <value>Configuration mise à jour.</value>
+  </data>
+  <data name="pageConfig_DialogNo" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="pageConfig_DialogYes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="pageConfig_TextBlock_Header.Text" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="pageResult_Assignment" xml:space="preserve">
+    <value>Assignation : {0}</value>
+  </data>
+  <data name="pageResult_DialogClose" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="pageResult_DialogCopied" xml:space="preserve">
+    <value>Copié dans le presse-papiers :</value>
+  </data>
+  <data name="pageResult_OrganizationAddress" xml:space="preserve">
+    <value>Adresse de l'organisme : {0}</value>
+  </data>
+  <data name="pageResult_OrganizationName" xml:space="preserve">
+    <value>Nom de l'organisme : {0}</value>
+  </data>
+  <data name="pageResult_Protocol" xml:space="preserve">
+    <value>Protocole : {0}</value>
+  </data>
+  <data name="pageResult_Registry" xml:space="preserve">
+    <value>Registre : {0}</value>
+  </data>
+  <data name="MainPage_RecordLoaderError" xml:space="preserve">
+    <value>Erreur lors du chargement des bases de données.</value>
+  </data>
+</root>
