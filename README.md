@@ -1,3 +1,5 @@
+Please note that IEEE has not endorsed nor is IEEE affiliated with the searchIEEE app.
+
 #searchIEEE
 
 IEEE Registration Authority assignment search (GUI and command line).
