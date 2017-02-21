@@ -180,7 +180,7 @@
     <Content Include="searchOUI.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\searchIEEE-Common\searchOUI-Common.csproj">
+    <ProjectReference Include="..\searchOUI-Common\searchOUI-Common.csproj">
       <Project>{15736059-3492-4199-9153-c24b7ad83bd9}</Project>
       <Name>searchOUI-Common</Name>
     </ProjectReference>

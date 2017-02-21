@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchOUI", "searchIEEE\searchOUI.csproj", "{4C85B4BB-0263-4091-B8E9-59DE0D83F5B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchOUI", "searchOUI\searchOUI.csproj", "{4C85B4BB-0263-4091-B8E9-59DE0D83F5B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchOUI-Console", "searchIEEE-Console\searchOUI-Console.csproj", "{E431A178-3D36-44E1-9E32-8876CBCE6CCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchOUI-Console", "searchOUI-Console\searchOUI-Console.csproj", "{E431A178-3D36-44E1-9E32-8876CBCE6CCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchOUI-Common", "searchIEEE-Common\searchOUI-Common.csproj", "{15736059-3492-4199-9153-C24B7AD83BD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchOUI-Common", "searchOUI-Common\searchOUI-Common.csproj", "{15736059-3492-4199-9153-C24B7AD83BD9}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "searchOUI-Setup", "searchIEEE-Setup\searchIEEE-Setup.vdproj", "{463CB338-3941-4976-8AF0-C3D04D20A921}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "searchOUI-Setup", "searchOUI-Setup\searchOUI-Setup.vdproj", "{463CB338-3941-4976-8AF0-C3D04D20A921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchOUI-UAP", "searchIEEE-UAP\searchOUI-UAP.csproj", "{3E8BC905-7976-40CF-A27D-CE835361C76F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchOUI-UAP", "searchOUI-UAP\searchOUI-UAP.csproj", "{3E8BC905-7976-40CF-A27D-CE835361C76F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
