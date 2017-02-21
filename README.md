@@ -1,15 +1,11 @@
-Please note that IEEE has not endorsed nor is IEEE affiliated with the searchIEEE app.
-
-#searchIEEE
-
-IEEE Registration Authority assignment search (GUI and command line).
+#searchOUI
 
 GUI Usage
 ---------
 
 At initial startup of the GUI version, a local copy of the IEEE's assignment databases will be downloaded to your computer, theses local copies are use for search by both GUI and command line version. The databases are stored as CSV files in the following location
 
-    %USERPROFILE%\AppData\Roaming\Eddy Beaupré\searchIEEE\
+    %USERPROFILE%\AppData\Roaming\Eddy Beaupré\searchOUI\
 
 To search the databases, simply enter your search term then press ENTER, If any records are found a result window will open and show all matching results. The search term will be match agains the assignment number, organisation name and address. All matching results will be return. MAC address match is not based on any predefined format, you can enter MAC in any format (aabb.ccdd.eeff, aa-bb-cc-dd-ee-ff, aa:bb:cc:dd:ee:ff, aabbccddeeff, etc...)
 
@@ -20,9 +16,9 @@ The configure button can be used to change the URL used to fetch the databases, 
 Command line Usage
 ------------------
 
-    searchIEEE 1.3.0.0
-    Copyright ©  2016 Eddy Beaupré
-    Usage: searchIEEE-Console.exe [-s term] [-a]
+    searchOUI 1.4.0.0
+    Copyright ©  2017 Eddy Beaupré
+    Usage: searchOUI-Console.exe [-s term] [-a]
     
       -s, --search    Search term.
     
@@ -36,7 +32,7 @@ Since version 1.3, the command line version is also able to initialize the datab
 
 Licence
 -------
-Copyright (c) 2016 Eddy Beaupré. All rights reserved.
+Copyright (c) 2016-2017 Eddy Beaupré. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -45,3 +41,8 @@ Redistribution and use in source and binary forms, with or without modification,
 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
 THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Disclaimer
+----------
+
+The IEEE does not endorse or recommend this software, nor is IEEE affiliated with it. This software use the publicly available databases provided by the IEEE under their terms and conditions which are available at the following URL: http://www.ieee.org/site_terms_conditions.html?WT.mc_id=hpf_terms&utm_source=hp&utm_campaign=hpf_terms&utm_medium=hpf&utm_term=terms%20conditions
