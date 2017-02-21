@@ -1,4 +1,4 @@
-﻿namespace searchIEEE
+﻿namespace searchOUIDB
 {
     partial class ConfigurationDialog
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigurationDialog));
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -182,7 +183,7 @@
             this.ieeeMAL.Size = new System.Drawing.Size(346, 20);
             this.ieeeMAL.TabIndex = 16;
             // 
-            // ieeeConfiguration
+            // ConfigurationDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,9 +204,10 @@
             this.Controls.Add(this.ieeeMAS);
             this.Controls.Add(this.ieeeMAM);
             this.Controls.Add(this.ieeeMAL);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ieeeConfiguration";
+            this.Name = "ConfigurationDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "ieeeConfiguration";

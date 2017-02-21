@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace searchIEEE.CustomExtensions
+namespace searchOUIDB.CustomExtensions
 {
     public static class StringExtension
     {

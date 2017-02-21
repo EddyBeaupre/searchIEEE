@@ -1,5 +1,5 @@
 ﻿using CsvHelper;
-using searchIEEE.CustomExtensions;
+using searchOUIDB.CustomExtensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace searchIEEE.Records
+namespace searchOUIDB.Records
 {
 
     public class Items

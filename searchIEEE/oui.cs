@@ -4,7 +4,7 @@ using System.Net;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace searchIEEE
+namespace searchOUIDB
 {
     public partial class ieee : Form
     {
@@ -106,6 +106,7 @@ namespace searchIEEE
             Thread thread = new Thread(() => searchWorker(Needle));
             thread.Name = "searchWorker";
             thread.IsBackground = true;
+            thread.SetApartmentState(System.Threading.ApartmentState.STA);
             thread.Start();
         }
 
@@ -115,10 +116,10 @@ namespace searchIEEE
 
             if (results != null)
             {
-                ieeeResult ieeeResult = new ieeeResult(results);
-                searchCallback();
-                ieeeResult.ShowDialog();
-                results = null;
+                    ieeeResult ieeeResult = new ieeeResult(results);
+                    searchCallback();
+                    ieeeResult.ShowDialog();
+                    results = null;
             }
         }
 

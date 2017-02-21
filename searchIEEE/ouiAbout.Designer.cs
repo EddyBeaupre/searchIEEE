@@ -1,4 +1,4 @@
-﻿namespace searchIEEE
+﻿namespace searchOUIDB
 {
     partial class ieeeAbout
     {
@@ -31,8 +31,8 @@
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelCopyright = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,15 +63,6 @@
             this.labelCopyright.TabIndex = 2;
             this.labelCopyright.Text = "labelCopyright";
             // 
-            // textBoxDescription
-            // 
-            this.textBoxDescription.AutoSize = true;
-            this.textBoxDescription.Location = new System.Drawing.Point(146, 72);
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(95, 13);
-            this.textBoxDescription.TabIndex = 4;
-            this.textBoxDescription.Text = "textBoxDescription";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -82,17 +73,28 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxDescription.Location = new System.Drawing.Point(149, 68);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ReadOnly = true;
+            this.textBoxDescription.Size = new System.Drawing.Size(252, 72);
+            this.textBoxDescription.TabIndex = 6;
+            // 
             // ieeeAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 154);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBoxDescription);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelCopyright);
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.labelProductName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ieeeAbout";
@@ -111,8 +113,8 @@
 
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelVersion;
-        private System.Windows.Forms.Label textBoxDescription;
         private System.Windows.Forms.Label labelCopyright;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox textBoxDescription;
     }
 }

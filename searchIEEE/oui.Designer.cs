@@ -1,4 +1,4 @@
-﻿namespace searchIEEE
+﻿namespace searchOUIDB
 {
     partial class ieee
     {
@@ -138,7 +138,7 @@
             this.MinimizeBox = false;
             this.Name = "ieee";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "searchIEEE";
+            this.Text = "searchOUI";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ieee_Load);
             this.contextMenuStrip1.ResumeLayout(false);

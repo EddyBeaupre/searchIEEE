@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using searchIEEE.Configuration;
+using searchOUIDB.Configuration;
 
-namespace searchIEEE
+namespace searchOUIDB
 {
     public partial class ConfigurationDialog : Form
     {

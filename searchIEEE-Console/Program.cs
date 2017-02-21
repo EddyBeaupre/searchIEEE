@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 
-namespace searchIEEE
+namespace searchOUIDB
 {
     public class Program
     {

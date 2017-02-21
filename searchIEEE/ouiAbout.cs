@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace searchIEEE
+namespace searchOUIDB
 {
     partial class ieeeAbout : Form
     {

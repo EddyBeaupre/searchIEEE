@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace searchIEEE
+namespace searchOUIDB
 {
     static class Program
     {

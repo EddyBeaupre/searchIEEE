@@ -7,9 +7,9 @@
     <ProjectGuid>{4C85B4BB-0263-4091-B8E9-59DE0D83F5B5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>searchIEEE</RootNamespace>
-    <AssemblyName>searchIEEE</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>searchOUIDB</RootNamespace>
+    <AssemblyName>searchOUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -54,17 +54,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>searchOUIDB.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>searchIEEE.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>10252C02AF2CF3C4AA489D848F87AE3880349E5C</ManifestCertificateThumbprint>
@@ -73,7 +73,17 @@
     <ManifestTimestampUrl>http://timestamp.verisign.com/scripts/timstamp.dll</ManifestTimestampUrl>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>searchIEEEE.ico</ApplicationIcon>
+    <ApplicationIcon>searchOUI.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Standard Release|AnyCPU'">
+    <OutputPath>bin\Standard Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
@@ -101,43 +111,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ieeeAbout.cs">
+    <Compile Include="ouiAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ieeeAbout.Designer.cs">
-      <DependentUpon>ieeeAbout.cs</DependentUpon>
+    <Compile Include="ouiAbout.Designer.cs">
+      <DependentUpon>ouiAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="ieee.cs">
+    <Compile Include="oui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ieee.Designer.cs">
-      <DependentUpon>ieee.cs</DependentUpon>
+    <Compile Include="oui.Designer.cs">
+      <DependentUpon>oui.cs</DependentUpon>
     </Compile>
-    <Compile Include="ieeeConfiguration.cs">
+    <Compile Include="ouiConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ieeeConfiguration.Designer.cs">
-      <DependentUpon>ieeeConfiguration.cs</DependentUpon>
+    <Compile Include="ouiConfiguration.Designer.cs">
+      <DependentUpon>ouiConfiguration.cs</DependentUpon>
     </Compile>
-    <Compile Include="ieeeResult.cs">
+    <Compile Include="ouiResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ieeeResult.Designer.cs">
-      <DependentUpon>ieeeResult.cs</DependentUpon>
+    <Compile Include="ouiResult.Designer.cs">
+      <DependentUpon>ouiResult.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ieeeAbout.resx">
-      <DependentUpon>ieeeAbout.cs</DependentUpon>
+    <EmbeddedResource Include="ouiAbout.resx">
+      <DependentUpon>ouiAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ieee.resx">
-      <DependentUpon>ieee.cs</DependentUpon>
+    <EmbeddedResource Include="oui.resx">
+      <DependentUpon>oui.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ieeeConfiguration.resx">
-      <DependentUpon>ieeeConfiguration.cs</DependentUpon>
+    <EmbeddedResource Include="ouiConfiguration.resx">
+      <DependentUpon>ouiConfiguration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ieeeResult.resx">
-      <DependentUpon>ieeeResult.cs</DependentUpon>
+    <EmbeddedResource Include="ouiResult.resx">
+      <DependentUpon>ouiResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,7 +160,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
-    <None Include="searchIEEE.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -168,15 +177,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="searchIEEEE.ico" />
+    <Content Include="searchOUI.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\searchIEEE-Common\searchIEEE-Common.csproj">
+    <ProjectReference Include="..\searchIEEE-Common\searchOUI-Common.csproj">
       <Project>{15736059-3492-4199-9153-c24b7ad83bd9}</Project>
-      <Name>searchIEEE-Common</Name>
+      <Name>searchOUI-Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Users\t890060\Documents\Certificats\Code\sign.cmd" "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

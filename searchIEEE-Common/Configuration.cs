@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace searchIEEE.Configuration
+namespace searchOUIDB.Configuration
 {
     public class Data
     {

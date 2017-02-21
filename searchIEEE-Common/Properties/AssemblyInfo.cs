@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("searchIEEE-Common")]
-[assembly: AssemblyDescription("searchIEEE support objects")]
+[assembly: AssemblyTitle("searchOUI-Common")]
+[assembly: AssemblyDescription("searchOUI support objects")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Eddy Beaupré")]
-[assembly: AssemblyProduct("searchIEEE-Common")]
+[assembly: AssemblyProduct("searchOUI-Common")]
 [assembly: AssemblyCopyright("Copyright ©  2016 Eddy Beaupré")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using searchIEEE.CustomExtensions;
+using searchOUIDB.CustomExtensions;
 
-namespace searchIEEE
+namespace searchOUIDB
 {
+
     public partial class ieeeResult : Form
     {
-        private List<searchIEEE.Records.Items> dataResults = null;
+        private List<searchOUIDB.Records.Items> dataResults = null;
 
-        public ieeeResult(List<searchIEEE.Records.Items> dataResults)
+        
+        public ieeeResult(List<searchOUIDB.Records.Items> dataResults)
         {
             try
             {
@@ -81,7 +83,7 @@ namespace searchIEEE
 
                     
 
-                    foreach (searchIEEE.Records.Items dataRow in this.dataResults)
+                    foreach (searchOUIDB.Records.Items dataRow in this.dataResults)
                     {
                         ouiDatabaseView.Rows.Add(Count++, dataRow.Assignment.GetOid64(), dataRow.Registry, dataRow.OrganizationName, dataRow.OrganizationAddress);
                     }
@@ -106,6 +108,7 @@ namespace searchIEEE
             }
         }
     }
+
 
     public class formatOID : IFormatProvider, ICustomFormatter
     {
